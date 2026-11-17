@@ -3,6 +3,7 @@
 	import type { LayoutProps } from './$types';
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
+	import '../app.css';
 	let { children }: LayoutProps = $props();
 	const pages = [
 		{ name: 'Listings', href: '/listings' },
@@ -27,3 +28,21 @@
 	{/each}
 </nav>
 {@render children()}
+
+<style>
+	nav {
+		display: flex; /* lay the links out in a row */
+		gap: 1rem; /* space between each link */
+		padding: 1rem; /* breathing room inside the bar */
+		background: var(--color-surface); /* which variable is for bars/cards? */
+	}
+
+	a {
+		color: var(--color-muted); /* links not selected: secondary text */
+		text-decoration: none; /* remove the underline */
+	}
+
+	a[aria-current='page'] {
+		color: var(--color-accent); /* the active link stands out */
+	}
+</style>
